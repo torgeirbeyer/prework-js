@@ -1,17 +1,19 @@
 <html>
 <head>
 	<title>Mars Rover Kata!</title>
+	<link rel="stylesheet" type="text/css" href="rover.css">
 	<script type="text/javascript" src="rover.js"></script>
 </head>
 <body>
-<h1>MARS ROVER!</h1>
-<form>
-	<div>
-		<label>Type in directions (f, b, r, l)</label>
-		<input type="text" name="userInput" id="userInput" value="f, b, r, l...">
-		<button type="onclick"></button>
+<div class="inputform">
+	<h1 class="text">MARS ROVER!</h1>
+	<form action="" method="post">
+		<p class="text">Type in directions (F, B, R, L):</p><input type="text" placeholder="F, B, R, L" name="userInput" id="userInput">
+		<button onclick="moveRover()">Send movement to rover</button>
+	</form>
+</div>
 
-</form>
 
+<script type="text/javascript" src="rover.js"></script>
 </body>
 </html>

@@ -5,9 +5,7 @@ var grid = [
 ];
 //Looping through the map
 for(i = 0; i < grid.length; i++) {
-  for(j = 0; j < grid[i].length; j++) {
     console.log(grid);
-  }
 }
 
 
@@ -17,10 +15,31 @@ var myRover = {
   direction: 'N'
 };
 
-// var yourRover = {
-//   position: [9,9],
-//   direction: 'S'
-// };
+
+//Function to make rover move. Take commands from HTML-form.
+function moveRover() {
+  let input = document.getElementById('userInput').value;
+  input.split(' ');
+  console.log(input);
+  let user = [];
+  user.push(input[i]);
+  console.log(user);
+  // for(let i = 0; i < user.length; i++) {
+    
+  //   if(user === 'F') {
+  //     goForward(myRover);
+  //   } else if(user === 'B') {
+  //     goBackward(myRover);
+  //   } else if(user === 'R') {
+  //     turnRoverRight(myRover);
+  //   } else if(user === 'L') {
+  //     turnRoverLeft(myRover);
+  //   } else {
+  //     alert('WRONG COMMANDS');
+  //   }
+  // } 
+  checkPosition();
+};
 
 //Make the rover move forward
 function goForward(rover) {
@@ -106,26 +125,8 @@ function turnRoverLeft(rover) {
 
 
 
-function moveRover() {
-  let userCommands = prompt('Where do you want the rover to move?');
-  let commands = [];
-  commands.push(userCommands);
-  userCommands.split(' ');
- 
-  for(var i; i <= commands.length; i++) {
-    if(commands === 'f' || 'F') {
-      goForward(myRover);
-    }else if(commands === 'b' || 'B'){
-      goBackward(myRover);
-    }else if(commands === 'r' || 'R'){
-      turnRoverRight(myRover);
-    }else if(commands === 'l' || 'L'){
-      turnRoverLeft(myRover);
-    }else{
-      console.log('Please type a valid command');
-    }; 
-  }
-};
+
+
 
 
 
@@ -142,7 +143,7 @@ function moveRover() {
 
 
 
-// //Wrap grid from one end to the other
+//Wrap grid from one end to the other
 // function checkPosition(){
 //   if(myRover.position[0] > 9){
 //     myRover.position[0] = 0
@@ -152,7 +153,7 @@ function moveRover() {
 //     myRover.position[1] = 0
 //   }else if(myRover.position[1] < 0){
 //     myRover.position[1] = 9
-// };
+//   };
 // };
 
 
