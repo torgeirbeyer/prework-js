@@ -3,7 +3,7 @@
 }
 
 body {
-	background: url("octavian-rosca-208933.jpg");
+	/*background: url("octavian-rosca-208933.jpg");*/
 }
 
 .text {
@@ -12,4 +12,5 @@ body {
 
 .inputform {
 	text-align: center;
+	margin-top: 20%;
 }

@@ -1,6 +1,6 @@
 //Map for rover - 10x10 grid
 var grid = [
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ];
 //Looping through the map
@@ -9,152 +9,143 @@ for(i = 0; i < grid.length; i++) {
 }
 
 
-//Rover with initial starting point pointing 'N' 
+//Rover with initial starting point pointing 'N'
 var myRover = {
-  position: [0,0], 
+  position: [0,0],
   direction: 'N'
 };
 
 
 //Function to make rover move. Take commands from HTML-form.
-function moveRover() {
+function getUserinput() {
   let input = document.getElementById('userInput').value;
   input.split(' ');
-  console.log(input);
   let user = [];
-  user.push(input[i]);
-  console.log(user);
-  // for(let i = 0; i < user.length; i++) {
+  for(let i = 0; i < input.length; i++) {
     
-  //   if(user === 'F') {
-  //     goForward(myRover);
-  //   } else if(user === 'B') {
-  //     goBackward(myRover);
-  //   } else if(user === 'R') {
-  //     turnRoverRight(myRover);
-  //   } else if(user === 'L') {
-  //     turnRoverLeft(myRover);
-  //   } else {
-  //     alert('WRONG COMMANDS');
-  //   }
-  // } 
-  checkPosition();
-};
+    user.push(input[i].toUpperCase());
+    
+   // moveRover();
+  }
+  console.log(user);
+
+  for(let j = 0; j < user.length; j++) {
+  if(user == 'F') {
+    goForward(myRover);
+  } else if(user == 'B') {
+    goBackward(myRover);
+  } else if(user == 'R') {
+    turnRoverRight(myRover);
+  } else if(user == 'L') {
+    turnRoverLeft(myRover);
+  } else {
+    alert('WRONG COMMANDS');
+  }
+}
+  checkPosition(myRover);
+}
+
+
+
+function moveRover() {
+  
+}
+
 
 //Make the rover move forward
 function goForward(rover) {
-  switch(rover.direction) {
+  switch(myRover.direction) {
     case 'N':
-      rover.position[0]++
+      myRover.position[0]++;
       break;
     case 'E':
-      rover.position[1]++
+      myRover.position[1]++;
       break;
     case 'S':
-      rover.position[0]--
+      myRover.position[0]--;
       break;
     case 'W':
-      rover.position[1]--
+      myRover.position[1]--;
       break;
-  };
+  }
 
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
+  checkPosition(myRover);
+
+  console.log("New Rover Position: [" + myRover.position[0] + ", " + myRover.position[1] + "]");
 }
 
 //Make rover move backwards
 function goBackward(rover) {
-  switch(rover.direction) {
+  switch(myRover.direction) {
     case 'N':
-      rover.position[0]--
+      myRover.position[0]--;
       break;
-    case 'E': 
-      rover.position[1]--
+    case 'E':
+      myRover.position[1]--;
       break;
-    case 'S': 
-      rover.position[0]++
+    case 'S':
+      myRover.position[0]++;
       break;
-    case 'W': 
-      rover.position[0]++
+    case 'W':
+      myRover.position[0]++;
       break;
   }
-  console.log('New Rover Position: [' + rover.position[0] + ', ' + rover.position[1] + ']')
-};
+  console.log('New Rover Position: [' + myRover.position[0] + ', ' + myRover.position[1] + ']');
+}
 
 //Make the rover turn to the right
 function turnRoverRight(rover) {
-  switch(rover.direction) {
+  switch(myRover.direction) {
     case 'N':
-      rover.direction = 'E'
+      myRover.direction = 'E';
       break;
     case 'E':
-      rover.direction = 'S'
+      myRover.direction = 'S';
       break;
     case 'S':
-      rover.direction = 'W'
+      myRover.direction = 'W';
       break;
     case 'W':
-      rover.direction = 'N'
+      myRover.direction = 'N';
       break;
   }
-  console.log('New Rover Direction: [' + rover.direction + ']');
-};
+  console.log('New Rover Direction: [' + myRover.direction + ']');
+}
 
 
 //Make the rover turn to the left
 function turnRoverLeft(rover) {
-  switch(rover.direction) {
+  switch(myRover.direction) {
     case 'N':
-      rover.direction = 'W'
+      myRover.direction = 'W';
       break;
     case 'W':
-      rover.direction = 'S'
+      myRover.direction = 'S';
       break;
     case 'S':
-      rover.direction = 'E'
+      myRover.direction = 'E';
       break;
     case 'E':
-      rover.direction = 'N'
+      myRover.direction = 'N';
       break;
   }
-  console.log('New Rover Direction: [' + rover.direction + ']');
+  console.log('New Rover Direction: [' + myRover.direction + ']');
 }
 
 
-//Implement commands forward(f) and backward(b)
-//implement commands turnRight(r) and turnLeft(l)
-
-
-
-
-
-
-
-
-/*function moveRover(){
-  var input = [];
-  for(i = 0; i < input.length; i++){
-    
-  }
-  checkPosition();
-};*/
-
-
-
-
-
-
 //Wrap grid from one end to the other
-// function checkPosition(){
-//   if(myRover.position[0] > 9){
-//     myRover.position[0] = 0
-//   }else if(myRover.position [0] < 0){
-//     myRover.position[0] = 9
-//   }else if(myRover.position[1] > 9){
-//     myRover.position[1] = 0
-//   }else if(myRover.position[1] < 0){
-//     myRover.position[1] = 9
-//   };
-// };
+function checkPosition(rover){
+  if(myRover.position[0] > 9){
+    myRover.position[0] = 0;
+  }else if(myRover.position [0] < 0){
+    myRover.position[0] = 9;
+  }else if(myRover.position[1] > 9){
+    myRover.position[1] = 0;
+  }else if(myRover.position[1] < 0){
+    myRover.position[1] = 9;
+  };
+};
+
 
 
 
@@ -163,11 +154,3 @@ function turnRoverLeft(rover) {
 // goBackward(myRover);
 // turnRoverRight(myRover);
 // turnRoverLeft(myRover);
-
-
-
-
-
-
-
-
