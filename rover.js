@@ -14,7 +14,6 @@ var myRover = {
 function getUserinput() {
   let input = document.getElementById('userInput').value;
   input.split(' ');
-  console.log(input);
   let user = [];
   for(var i = 0; i < input.length; i++) {
     user = input[i].toUpperCase();
