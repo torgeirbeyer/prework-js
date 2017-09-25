@@ -10,6 +10,17 @@ var myRover = {
   direction: 'N'
 };
 
+//Canyon for rover to fall into
+// var canyon = {
+//   position: [4,6]
+// };
+
+//Second rover
+var yourRover ={
+  position: [9,9],
+  direction: 'S'
+};
+
 //Function to make rover move. Take commands from HTML-form.
 function getUserinput() {
   let input = document.getElementById('userInput').value;
@@ -30,6 +41,7 @@ function getUserinput() {
     }
   }
     checkPosition(myRover);
+    checkObstacle();
   }
 
 //Make the rover move forward
@@ -51,7 +63,7 @@ function goForward(rover) {
 
   checkPosition(myRover);
 
-  console.log("New Rover Position: [" + myRover.position[0] + ", " + myRover.position[1] + "]");
+  document.getElementById('roverPosition').innerHTML = "New Rover Position: [" + myRover.position[0] + ", " + myRover.position[1] + "]";
 }
 
 //Make rover move backwards
@@ -73,7 +85,7 @@ function goBackward(rover) {
 
   checkPosition(myRover);
 
-  console.log('New Rover Position: [' + myRover.position[0] + ', ' + myRover.position[1] + ']');
+  document.getElementById('roverPosition').innerHTML = 'New Rover Position: [' + myRover.position[0] + ', ' + myRover.position[1] + ']';
 }
 
 //Make the rover turn to the right
@@ -92,7 +104,7 @@ function turnRoverRight(rover) {
       myRover.direction = 'N';
       break;
   }
-  console.log('New Rover Direction: [' + myRover.direction + ']');
+  document.getElementById('roverDirection').innerHTML = 'New Rover Direction: [' + myRover.direction + ']';
 }
 
 //Make the rover turn to the left
@@ -111,7 +123,7 @@ function turnRoverLeft(rover) {
       myRover.direction = 'N';
       break;
   }
-  console.log('New Rover Direction: [' + myRover.direction + ']');
+  document.getElementById('roverDirection').innerHTML = 'New Rover Direction: [' + myRover.direction + ']';
 }
 
 //Wrap grid from one end to the other
@@ -126,6 +138,13 @@ function checkPosition(rover){
     myRover.position[1] = 9;
   }
 }
+
+//To check if rover hits obsatcles
+// function checkObstacle () {
+//   if(myRover.position[0] === canyon.position[0] && myRover.position[1] === canyon.position[1]) {
+//     console.log("Oh noooooooooooooooooo!!!");
+//   }
+// }
 
 // goForward(myRover);
 // goBackward(myRover);

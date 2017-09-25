@@ -2,15 +2,25 @@
 	border: 1px solid black;
 }
 
+.inputform {
+	text-align: center;
+	margin-top: 20%;
+}
+
+.feedback {
+	color: yellow;
+	text-size: 2em;
+	text-transform: uppercase;
+	padding: 5 0;
+	margin: 5 0;
+
+	}
+
+
 body {
 	background: url("octavian-rosca-208933.jpg");
 }
 
 .text {
 	color: white;
-}
-
-.inputform {
-	text-align: center;
-	margin-top: 20%;
 }
