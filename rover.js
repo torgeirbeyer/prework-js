@@ -15,12 +15,6 @@ var myRover = {
 //   position: [4,6]
 // };
 
-//Second rover
-var yourRover ={
-  position: [9,9],
-  direction: 'S'
-};
-
 //Function to make rover move. Take commands from HTML-form.
 function getUserinput() {
   let input = document.getElementById('userInput').value;
@@ -41,7 +35,8 @@ function getUserinput() {
     }
   }
     checkPosition(myRover);
-    checkObstacle();
+    // checkObstacle();
+    giveFeedback();
   }
 
 //Make the rover move forward
@@ -60,10 +55,7 @@ function goForward(rover) {
       myRover.position[1]--;
       break;
   }
-
   checkPosition(myRover);
-
-  document.getElementById('roverPosition').innerHTML = "New Rover Position: [" + myRover.position[0] + ", " + myRover.position[1] + "]";
 }
 
 //Make rover move backwards
@@ -82,10 +74,7 @@ function goBackward(rover) {
       myRover.position[0]++;
       break;
   }
-
   checkPosition(myRover);
-
-  document.getElementById('roverPosition').innerHTML = 'New Rover Position: [' + myRover.position[0] + ', ' + myRover.position[1] + ']';
 }
 
 //Make the rover turn to the right
@@ -104,7 +93,6 @@ function turnRoverRight(rover) {
       myRover.direction = 'N';
       break;
   }
-  document.getElementById('roverDirection').innerHTML = 'New Rover Direction: [' + myRover.direction + ']';
 }
 
 //Make the rover turn to the left
@@ -123,7 +111,6 @@ function turnRoverLeft(rover) {
       myRover.direction = 'N';
       break;
   }
-  document.getElementById('roverDirection').innerHTML = 'New Rover Direction: [' + myRover.direction + ']';
 }
 
 //Wrap grid from one end to the other
@@ -137,6 +124,11 @@ function checkPosition(rover){
   }else if(myRover.position[1] < 0){
     myRover.position[1] = 9;
   }
+}
+
+//Give user feedback of position and direction
+function giveFeedback(){
+  document.getElementById('roverPosition').innerHTML = `Mars Rover Kata is currently at position [${myRover.position[0]}, ${myRover.position[1]}] and is facing ${myRover.direction}.`
 }
 
 //To check if rover hits obsatcles
