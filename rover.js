@@ -11,9 +11,9 @@ var myRover = {
 };
 
 //Canyon for rover to fall into
-// var canyon = {
-//   position: [4,6]
-// };
+var canyon = {
+  position: [4,6]
+};
 
 //Function to make rover move. Take commands from HTML-form.
 function getUserinput() {
@@ -22,7 +22,9 @@ function getUserinput() {
   let user = [];
   for(var i = 0; i < input.length; i++) {
     user = input[i].toUpperCase();
-    if(user == 'F') {
+    if(checkObstacle() === true){
+      break;
+    } else if(user == 'F') {
       goForward(myRover);
     } else if(user == 'B') {
       goBackward(myRover);
@@ -35,9 +37,10 @@ function getUserinput() {
     }
   }
     checkPosition(myRover);
-    // checkObstacle();
     giveFeedback();
-  }
+    checkObstacle();
+}
+
 
 //Make the rover move forward
 function goForward(rover) {
@@ -132,11 +135,13 @@ function giveFeedback(){
 }
 
 //To check if rover hits obsatcles
-// function checkObstacle () {
-//   if(myRover.position[0] === canyon.position[0] && myRover.position[1] === canyon.position[1]) {
-//     console.log("Oh noooooooooooooooooo!!!");
-//   }
-// }
+function checkObstacle () {
+  if(myRover.position[0] === canyon.position[0] && myRover.position[1] === canyon.position[1]) {
+    document.getElementById('roverPosition').innerHTML = '';
+    document.getElementById('canyon').innerHTML = 'Oh noooooooooooooooooo!!! You fell into a canyon!';
+    return true;
+  }
+}
 
 // goForward(myRover);
 // goBackward(myRover);
